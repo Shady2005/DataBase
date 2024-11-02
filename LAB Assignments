@@ -1,1 +1,92 @@
+--Q1
+ALTER table Employees 
+add constraint FK_Employee foreign key (DepartmentID) references Departments (DepartmentID);
+
+--Q2
+
+ALTER table Projects 
+add constraint FK_Project foreign key (DepartmentID) references  Departments (DepartmentID);
+
+
+--Q3
+
+ALTER table Attendance
+add constraint FK_Attend foreign key (EmployeeID) references Employees (EmployeeID);
+
+--Q4
+
+ALTER table Salaries
+add constraint FK_Salaries_id foreign key(EmployeeID) references Employees(EmployeeID);
+
+
+--Q5
+
+ALTER table Projects
+add constraint ch_prj Check (Budget >0);
+
+
+--Q6
+
+Alter table Salaries
+add constraint CH_Sal Check (BaseSalary BETWEEN 30000 AND 200000);
+
+
+--Q7
+
+Alter table Attendance
+add constraint ck_att Check (CheckOutTime > CheckInTime);
+
+--Q8
+
+Alter table Employees
+add constraint UQ_Email Unique (Email);
+
+--Q9
+
+Alter table Employees
+add constraint UQ_Phone UNIQUE (Phone);
+
+--Q10
+
+select AVG(Bonus) as 'Average Bonus'
+from Salaries;
+
+--Q11
+
+select Employees.FirstName, Employees.LastName, Departments.DepartmentName
+from Employees JOIN  Departments ON EmployeeID = EmployeeID ;
+
+--Q12
+
+select *from Employees
+where FirstName = '____';
+
+--Q13
+
+select *from Employees
+where FirstName = 'A___';
+
+--Q14
+
+select Employees.FirstName, Employees.LastName, Departments.DepartmentName
+from Employees JOIN Departments ON EmployeeID = EmployeeID;
+
+alter table  Employees
+add constraint TIME_ch Check ( HireDate > 'October 24, 2023');
+
+--Q15
+
+select COUNT(EmployeeID)
+from Employees
+where HireDate = '2023-10-24';
+
+--Q16
+
+select COUNT( BaseSalary ), COUNT( Bonus )
+from Salaries;
+
+--Q17
+
+select distinct Location
+from Departments;
 
